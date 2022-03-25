@@ -16,14 +16,14 @@
 
 <body background="bg.jpg">
 <center>
-  <h1 class="btn btn-primary heading">Object Detection - Bedroom</h1>
+  <h1 class="btn btn-info heading">Object Detection - TV</h1>
   <a href="index.html" class="btn">Back</a>
-  <br><br>
+  <br><br><br><br>
   <h3 id="status" class="btn btn-danger"></h3>
   <br>
   <h3 class="btn btn-success" style="font-size:15px;">
-    There are 2 big objects in the image from which cocossd model has detected 1 objects.
-  </h3>   
+    There are 1 big objects in the image from which cocossd model has detected 1 objects.
+  </h3>  
 </center>
 
 <script>
@@ -34,7 +34,7 @@ objects = [];
 status = "";
 
 function preload(){
-  img = loadImage('bedroom.jpg');
+  img = loadImage('tv.jpg');
 }
 
 
@@ -49,6 +49,14 @@ function modelLoaded() {
   console.log("Model Loaded!")
   status = true;
   objectDetector.detect(img, gotResult);
+}
+
+function gotResult(error, results) {
+  if (error) {
+    console.log(error);
+  }
+  console.log(results);
+  objects = results;
 }
 
 function draw() {
@@ -66,15 +74,6 @@ function draw() {
     }
   }
 }
-
-function gotResult(error, results) {
-  if (error) {
-    console.log(error);
-  }
-  console.log(results);
-  objects = results;
-}
-
 
 </script>
 
